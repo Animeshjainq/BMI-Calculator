@@ -1,0 +1,76 @@
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    // educate the user on what the program does
+    cout << "This program will calculate your BMI (Body Mass Index) and determine if you are underweight, normal weight, overweight, or obese." << endl;
+    
+    // ask the user about the units he is using SI or IM
+    string units;
+    cout << "Are you using SI (metric) or IM (imperial) units? (SI/IM): ";
+    cin >> units;
+    
+    // capture user responce
+    double height;
+    double weight;
+    double bmi;
+    
+    // ask for the user's height IN or CM
+    if (units == "SI") {
+        cout << "Please enter your height in centimeters: ";
+        cin >> height;
+    }
+    else if (units == "IM") {
+        cout << "Please enter your height in inches: ";
+        cin >> height;
+    }
+    
+    // if SI is selected calculate IN and if IM is selected calculate  CM
+    if (units == "SI") {
+        height = height / 2.54;
+    }
+    else if (units == "IM") {
+        height = height * 2.54;
+    }
+    
+    // ask the user for weight POUNDS or KG
+    if (units == "SI") {
+        cout << "Please enter your weight in kilograms: ";
+        cin >> weight;
+    }
+    else if (units == "IM") {
+        cout << "Please enter your weight in pounds: ";
+        cin >> weight;
+    }
+    
+    // convert from SI to IN
+    if (units == "SI") {
+        weight = weight * 2.2;
+    }
+    else if (units == "IM") {
+        weight = weight / 2.2;
+    }
+    
+    // calculate BMI
+    bmi = (weight / (height * height)) * 703;
+    
+    // decide if the BMI calculated is underweight, normal weight, overweight, or obese
+    if (bmi < 18.5) {
+        cout << "Your BMI is " << bmi << ". You are underweight." << endl;
+    }
+    else if (bmi >= 18.5 && bmi <= 24.9) {
+        cout << "Your BMI is " << bmi << ". You are normal weight." << endl;
+    }
+    else if (bmi >= 25 && bmi <= 29.9) {
+        cout << "Your BMI is " << bmi << ". You are overweight." << endl;
+    }
+    else if (bmi >= 30) {
+        cout << "Your BMI is " << bmi << ". You are obese." << endl;
+    }
+    
+    return 0;
+}
